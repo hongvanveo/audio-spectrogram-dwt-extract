@@ -7,4 +7,4 @@ if [ ! -s recovered_secret.png ]; then
 fi
 printf 'opened\n' > .recovered_image_viewed
 python3 refresh_status.py >/dev/null 2>&1 || true
-exec feh recovered_secret.png
+exec feh -F -Z recovered_secret.png
