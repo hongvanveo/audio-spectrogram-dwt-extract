@@ -51,7 +51,6 @@ RUN chown -R ubuntu:ubuntu /home/ubuntu \
        'fi' \
        'exec "$REAL" "$@"' > /bin/systemctl \
     && chmod 755 /bin/systemctl \
-    && ln -sf /bin/systemctl /usr/bin/systemctl \
     && find /home/ubuntu/stego -maxdepth 1 \( -name '*.py' -o -name '*.sh' \) -exec chmod +x {} + \
     && chmod 700 /home/ubuntu/.ssh \
     && chmod 600 /home/ubuntu/.ssh/authorized_keys \
