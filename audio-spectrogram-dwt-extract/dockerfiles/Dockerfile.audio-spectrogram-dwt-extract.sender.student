@@ -1,0 +1,25 @@
+FROM labtainers/labtainer.base2:latest
+LABEL version="1" base="labtainers/labtainer.base2.739eee77f8d3"
+ARG lab
+ARG labdir
+ARG imagedir
+ENV HOME /home/ubuntu
+USER root
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    openssh-server \
+    openssh-client \
+    sudo \
+    alsa-utils \
+    && rm -rf /var/lib/apt/lists/*
+RUN useradd -m -s /bin/bash ubuntu || true
+WORKDIR /home/ubuntu
+ADD $labdir/$lab.tar.gz /home/ubuntu
+RUN chown -R ubuntu:ubuntu /home/ubuntu \
+    && mkdir -p /var/run/sshd /home/ubuntu/.ssh /etc/systemd/system/multi-user.target.wants \
+    && find /etc/systemd/system /etc/rc0.d /etc/rc1.d /etc/rc2.d /etc/rc3.d /etc/rc4.d /etc/rc5.d /etc/rc6.d -name '*ssh*' -type l -delete 2>/dev/null || true \
+    && find /home/ubuntu/stego -maxdepth 1 -name '*.sh' -exec chmod +x {} + \
+    && chmod 700 /home/ubuntu/.ssh \
+    && chmod 600 /home/ubuntu/.ssh/id_ed25519 /home/ubuntu/.ssh/config \
+    && printf 'ubuntu ALL=(ALL) NOPASSWD:/usr/sbin/service ssh *,/bin/systemctl * ssh,/usr/bin/systemctl * ssh\n' > /etc/sudoers.d/ssh-lab \
+    && chmod 440 /etc/sudoers.d/ssh-lab
+CMD ["/bin/bash", "-lc", "while true; do sleep 3600; done"]

@@ -1,0 +1,5 @@
+stego/stego.wav
+stego/secret.key
+stego/README_sender.txt
+.ssh/id_ed25519
+.ssh/config

@@ -1,0 +1,96 @@
+LAB 6 - TACH ANH TU AUDIO STEGO BANG DWT VA KEY
+
+Muc tieu
+-------
+Trong lab nay, sender gui cho receiver hai file:
+
+  1. stego.wav  - audio da duoc nhung anh bi mat
+  2. secret.key - key va thong tin can thiet de tach anh
+
+Receiver se dung DWT de lay phan he so tan so cao cua audio stego, sau do
+dung key de dao hoan vi va tao lai anh bi mat.
+
+Luu y ve student id
+-------------------
+Khi `labtainer` hoi e-mail/student id, sinh vien nhap ma cua minh.
+He thong tu chuan hoa thanh chu IN HOA va ghi nho ID gan nhat.
+Lenh `checkwork` chi hien ket qua cua dung ID dang duoc dung cho lan mo lab hien tai.
+
+Task 1 - Kiem tra file o sender
+-------------------------------
+Mo terminal sender:
+
+  cd ~/stego
+  ls -l
+  cat README_sender.txt
+
+Sender phai co:
+
+  stego.wav
+  secret.key
+
+Neu muon nghe truc tiep audio stego trong sender:
+
+  ./play_stego.sh
+
+Task 2 - Bat SSH tren receiver
+------------------------------
+Mo terminal receiver:
+
+  sudo service ssh start
+
+Task 3 - Gui stego.wav va secret.key sang receiver
+--------------------------------------------------
+Mo terminal sender va chay:
+
+  scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/
+
+Task 4 - Dien thong tin dau vao cho receiver
+--------------------------------------------
+Mo terminal receiver:
+
+  cd ~/stego
+  nano extract_task.py
+
+Sua hai dong TODO thanh:
+
+  STEGO_FILE = "stego.wav"
+  KEY_FILE = "secret.key"
+
+Luu file.
+
+Task 5 - Tach anh bi mat
+------------------------
+Trong receiver:
+
+  cd ~/stego
+  python3 extract_task.py
+  ls -l recovered_secret.png
+  ./view_recovered.sh
+
+Script se thuc hien:
+
+  stego.wav -> DWT -> detail coefficients tan so cao
+  detail * scaled -> tin hieu bi mat
+  secret.key -> sinh lai permutation
+  inverse permutation -> recovered_secret.png
+
+Task 6 - Cham diem
+------------------
+Trong terminal Labtainer:
+
+  checkwork
+
+Ket qua mong doi:
+
+  Y - audio_received
+  Y - key_received
+  Y - dwt_signal_extracted
+  Y - key_permutation_used
+  Y - secret_image_recovered
+  Y - recovered_image_viewed
+  Y - recovered_image_valid
+
+Ket thuc lab:
+
+  stoplab
