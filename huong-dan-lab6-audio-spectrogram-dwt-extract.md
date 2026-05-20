@@ -82,6 +82,7 @@ Trong terminal `receiver`:
 
 ```bash
 sudo service ssh start
+systemctl status ssh
 ```
 
 ## Task 3: Nghe trực tiếp audio stego ở sender

@@ -118,7 +118,7 @@ def build_doc():
     add_code_block(doc, "cd ~/stego\nls -l\ncat README_sender.txt")
 
     add_heading(doc, "Task 2: Bat SSH tren receiver", 3)
-    add_code_block(doc, "sudo service ssh start")
+    add_code_block(doc, "sudo service ssh start\nsystemctl status ssh")
 
     add_heading(doc, "Task 3: Nghe truc tiep audio stego", 3)
     add_code_block(doc, "./play_stego.sh")

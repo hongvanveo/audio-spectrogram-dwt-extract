@@ -22,6 +22,7 @@ Trong receiver:
 
 ```bash
 sudo service ssh start
+systemctl status ssh
 ```
 
 Trong sender:

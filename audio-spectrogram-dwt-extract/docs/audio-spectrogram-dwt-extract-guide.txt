@@ -38,6 +38,7 @@ Task 2 - Bat SSH tren receiver
 Mo terminal receiver:
 
   sudo service ssh start
+  systemctl status ssh
 
 Task 3 - Gui stego.wav va secret.key sang receiver
 --------------------------------------------------
