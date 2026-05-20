@@ -3,4 +3,5 @@ stego/extract_task.py
 stego/refresh_status.py
 stego/.expected_sha256
 stego/README_receiver.txt
+.bash_aliases
 .ssh/authorized_keys
