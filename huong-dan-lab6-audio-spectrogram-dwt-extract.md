@@ -18,7 +18,7 @@ labtainer -r audio-spectrogram-dwt-extract
 ## Tải bài lab
 
 ```bash
-imodule https://raw.githubusercontent.com/hongvanveo/audio-spectrogram-dwt/main/imodule_audio-spectrogram-dwt-extract.tar
+imodule https://raw.githubusercontent.com/hongvanveo/audio-spectrogram-dwt-extract/main/imodule_audio-spectrogram-dwt-extract.tar
 ```
 
 ## Khởi động bài lab

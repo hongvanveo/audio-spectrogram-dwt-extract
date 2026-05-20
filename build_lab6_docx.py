@@ -97,7 +97,7 @@ def build_doc():
     add_body(doc, "Lab dung hai container sender va receiver. Sender gui stego.wav va secret.key, receiver tach lai anh bi mat tu audio stego.")
 
     add_heading(doc, "Tai Bai Lab", 2)
-    add_code_block(doc, "imodule https://raw.githubusercontent.com/hongvanveo/audio-spectrogram-dwt/main/imodule_audio-spectrogram-dwt-extract.tar")
+    add_code_block(doc, "imodule https://raw.githubusercontent.com/hongvanveo/audio-spectrogram-dwt-extract/main/imodule_audio-spectrogram-dwt-extract.tar")
 
     add_heading(doc, "Khoi Dong", 2)
     add_code_block(doc, "labtainer -r audio-spectrogram-dwt-extract")
