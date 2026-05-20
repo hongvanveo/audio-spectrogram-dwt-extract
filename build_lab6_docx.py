@@ -124,7 +124,7 @@ def build_doc():
     add_code_block(doc, "./play_stego.sh")
 
     add_heading(doc, "Task 4: Gui file sang receiver", 3)
-    add_code_block(doc, "scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/")
+    add_code_block(doc, "scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/\nssh ubuntu@receiver \"python3 ~/stego/refresh_status.py\"")
     add_code_block(doc, "cd ~/stego\nls -l stego.wav secret.key")
 
     add_heading(doc, "Task 5: Sua extract_task.py", 3)

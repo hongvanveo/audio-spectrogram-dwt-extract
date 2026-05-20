@@ -45,6 +45,7 @@ Task 3 - Gui stego.wav va secret.key sang receiver
 Mo terminal sender va chay:
 
   scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/
+  ssh ubuntu@receiver "python3 ~/stego/refresh_status.py"
 
 Task 4 - Dien thong tin dau vao cho receiver
 --------------------------------------------

@@ -101,6 +101,7 @@ Trong terminal `sender`:
 
 ```bash
 scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/
+ssh ubuntu@receiver "python3 ~/stego/refresh_status.py"
 ```
 
 Sau đó kiểm tra ở terminal `receiver`:

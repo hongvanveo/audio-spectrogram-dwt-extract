@@ -10,3 +10,4 @@ Nghe truc tiep audio stego:
 Sau khi receiver bat ssh, gui hai file bang lenh:
 
   scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/
+  ssh ubuntu@receiver "python3 ~/stego/refresh_status.py"
