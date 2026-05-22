@@ -12,15 +12,15 @@ from spectrogram_dwt_extract import (
 
 
 def get_inputs():
-    # TODO: dien file tin hieu da tach tu extract_signal.py.
-    HIDDEN_SIGNAL = "TODO_HIDDEN_SIGNAL_FILENAME"
+    # Dien file tin hieu da tach tu extract_signal.py vao chuoi rong ben duoi.
+    HIDDEN_SIGNAL = ""
 
-    # TODO: dien ten file key da nhan tu sender.
-    KEY_FILE = "TODO_KEY_FILENAME"
+    # Dien ten file key da nhan tu sender vao chuoi rong ben duoi.
+    KEY_FILE = ""
 
     OUTPUT_IMAGE = "recovered_secret.png"
-    if "TODO" in HIDDEN_SIGNAL or "TODO" in KEY_FILE:
-        raise SystemExit("Hay mo recover_image.py va dien hidden_signal.json va secret.key truoc khi chay.")
+    if not HIDDEN_SIGNAL.strip() or not KEY_FILE.strip():
+        raise SystemExit("Hay mo recover_image.py va dien hidden_signal.json va secret.key vao cac chuoi rong truoc khi chay.")
     return HIDDEN_SIGNAL, KEY_FILE, OUTPUT_IMAGE
 
 

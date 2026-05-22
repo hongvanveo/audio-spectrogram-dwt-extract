@@ -6,15 +6,15 @@ from spectrogram_dwt_extract import mark, multilevel_haar_dwt, parse_key_file, r
 
 
 def get_inputs():
-    # TODO: dien ten file audio stego ma receiver nhan duoc tu sender.
-    STEGO_FILE = "TODO_STEGO_FILENAME"
+    # Dien ten file audio stego ma receiver nhan duoc tu sender vao chuoi rong ben duoi.
+    STEGO_FILE = ""
 
-    # TODO: dien ten file key ma sender gui kem theo audio stego.
-    KEY_FILE = "TODO_KEY_FILENAME"
+    # Dien ten file key ma sender gui kem theo audio stego vao chuoi rong ben duoi.
+    KEY_FILE = ""
 
     OUTPUT_SIGNAL = "hidden_signal.json"
-    if "TODO" in STEGO_FILE or "TODO" in KEY_FILE:
-        raise SystemExit("Hay mo extract_signal.py va dien stego.wav va secret.key truoc khi chay.")
+    if not STEGO_FILE.strip() or not KEY_FILE.strip():
+        raise SystemExit("Hay mo extract_signal.py va dien stego.wav va secret.key vao cac chuoi rong truoc khi chay.")
     return STEGO_FILE, KEY_FILE, OUTPUT_SIGNAL
 
 
