@@ -55,7 +55,7 @@ Mo terminal receiver:
   cd ~/stego
   nano extract_signal.py
 
-Sua cac chuoi rong thanh:
+Sua TODO thanh:
 
   STEGO_FILE = "stego.wav"
   KEY_FILE = "secret.key"
@@ -71,7 +71,7 @@ Mo terminal receiver:
 
   nano recover_image.py
 
-Sua cac chuoi rong thanh:
+Sua TODO thanh:
 
   HIDDEN_SIGNAL = "hidden_signal.json"
   KEY_FILE = "secret.key"

@@ -72,7 +72,7 @@ cd ~/stego
 nano extract_signal.py
 ```
 
-Sua cac chuoi rong:
+Sua TODO:
 
 ```python
 STEGO_FILE = "stego.wav"
@@ -96,7 +96,7 @@ Trong terminal `receiver`:
 nano recover_image.py
 ```
 
-Sua cac chuoi rong:
+Sua TODO:
 
 ```python
 HIDDEN_SIGNAL = "hidden_signal.json"
