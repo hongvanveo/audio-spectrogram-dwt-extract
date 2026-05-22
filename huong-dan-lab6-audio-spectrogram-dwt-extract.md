@@ -24,9 +24,9 @@ stego.wav + secret.key
 -> recover_image.py: dung key de dao hoan vi, tao recovered_secret.png
 ```
 
-Moi phan yeu cau sua file code de dien ten file dau vao roi moi chay. Sau moi phan, chay `checkwork` de thay muc tuong ung chuyen sang `Y`.
+Moi task yeu cau sua file code de dien ten file dau vao roi moi chay. Sinh vien chi can kiem tra lenh tao dung file dau ra cua task do; khong can chay `checkwork` sau tung task.
 
-## Phan 1: Kiem tra sender
+## Task 1: Kiem tra sender
 
 Trong terminal `sender`:
 
@@ -39,7 +39,7 @@ cat README_sender.txt
 
 Sender can co `stego.wav` va `secret.key`.
 
-## Phan 2: Bat SSH tren receiver
+## Task 2: Bat SSH tren receiver
 
 Trong terminal `receiver`:
 
@@ -48,7 +48,7 @@ sudo service ssh start
 systemctl status ssh
 ```
 
-## Phan 3: Gui file sang receiver
+## Task 3: Gui file sang receiver
 
 Trong terminal `sender`:
 
@@ -57,20 +57,13 @@ scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/
 ssh ubuntu@receiver "python3 ~/stego/refresh_status.py"
 ```
 
-Trong terminal Labtainer:
+Trong terminal `receiver`, kiem tra:
 
 ```bash
-checkwork
+ls -l ~/stego/stego.wav ~/stego/secret.key
 ```
 
-Can thay:
-
-```text
-Y - audio_received
-Y - key_received
-```
-
-## Phan 4: Tach tin hieu bi mat tu DWT
+## Task 4: Tach tin hieu bi mat tu DWT
 
 Trong terminal `receiver`:
 
@@ -90,18 +83,12 @@ Chay:
 
 ```bash
 python3 extract_signal.py
-checkwork
+ls -l hidden_signal.json
 ```
 
 Script nay phan ra `stego.wav` bang DWT, lay detail coefficients o muc cuoi va nhan lai voi he so `scaled` trong key de tao `hidden_signal.json`.
 
-Can thay:
-
-```text
-Y - dwt_signal_extracted
-```
-
-## Phan 5: Dung key de khoi phuc anh
+## Task 5: Dung key de khoi phuc anh
 
 Trong terminal `receiver`:
 
@@ -120,35 +107,30 @@ Chay:
 
 ```bash
 python3 recover_image.py
-checkwork
+ls -l recovered_secret.png
 ```
 
 Script nay dung key de sinh lai thu tu permutation, dao hoan vi pixel va tao `recovered_secret.png`.
 
-Can thay:
-
-```text
-Y - key_permutation_used
-Y - secret_image_recovered
-Y - recovered_image_valid
-```
-
-## Phan 6: Mo anh da tach
+## Task 6: Mo anh da tach
 
 Trong terminal `receiver`:
 
 ```bash
 ./view_recovered.sh
+```
+
+Anh `recovered_secret.png` can mo duoc bang cua so xem anh binh thuong.
+
+## Ket qua cuoi cung
+
+Sau khi lam xong tat ca task, chay trong terminal Labtainer:
+
+```bash
 checkwork
 ```
 
-Can thay:
-
-```text
-Y - recovered_image_viewed
-```
-
-## Ket qua cuoi cung
+Ket qua dung:
 
 ```text
 Y - audio_received

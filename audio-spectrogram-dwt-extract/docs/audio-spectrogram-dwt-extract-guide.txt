@@ -14,9 +14,9 @@ Receiver se lam tung cong doan:
   3. Dung key de dao hoan vi va dung lai anh.
   4. Mo anh da tach de quan sat.
 
-Sau moi phan, co the chay checkwork de xem muc tuong ung chuyen sang Y.
+Sinh vien chi can kiem tra lenh cua tung task tao dung file dau ra. Khong can chay checkwork sau tung task; checkwork duoc chay mot lan o cuoi bai.
 
-Phan 1 - Kiem tra file o sender
+Task 1 - Kiem tra file o sender
 -------------------------------
 Mo terminal sender:
 
@@ -30,29 +30,25 @@ Sender phai co:
   stego.wav
   secret.key
 
-Phan 2 - Bat SSH tren receiver
+Task 2 - Bat SSH tren receiver
 ------------------------------
 Mo terminal receiver:
 
   sudo service ssh start
   systemctl status ssh
 
-Phan 3 - Gui stego.wav va secret.key sang receiver
+Task 3 - Gui stego.wav va secret.key sang receiver
 --------------------------------------------------
 Mo terminal sender:
 
   scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/
   ssh ubuntu@receiver "python3 ~/stego/refresh_status.py"
 
-Trong terminal Labtainer:
+Mo terminal receiver va kiem tra:
 
-  checkwork
+  ls -l ~/stego/stego.wav ~/stego/secret.key
 
-Muc can Y:
-  audio_received
-  key_received
-
-Phan 4 - Tach tin hieu bi mat tu DWT
+Task 4 - Tach tin hieu bi mat tu DWT
 ------------------------------------
 Mo terminal receiver:
 
@@ -67,15 +63,9 @@ Sua TODO thanh:
 Chay:
 
   python3 extract_signal.py
-  checkwork
+  ls -l hidden_signal.json
 
-Ket qua tao ra:
-  hidden_signal.json
-
-Muc can Y:
-  dwt_signal_extracted
-
-Phan 5 - Dung key de khoi phuc anh
+Task 5 - Dung key de khoi phuc anh
 ----------------------------------
 Mo terminal receiver:
 
@@ -89,28 +79,18 @@ Sua TODO thanh:
 Chay:
 
   python3 recover_image.py
-  checkwork
+  ls -l recovered_secret.png
 
-Ket qua tao ra:
-  recovered_secret.png
-
-Muc can Y:
-  key_permutation_used
-  secret_image_recovered
-  recovered_image_valid
-
-Phan 6 - Mo anh da tach
+Task 6 - Mo anh da tach
 -----------------------
 Trong receiver:
 
   ./view_recovered.sh
-  checkwork
-
-Muc can Y:
-  recovered_image_viewed
 
 Ket qua checkwork cuoi cung
 ---------------------------
+  checkwork
+
   Y - audio_received
   Y - key_received
   Y - dwt_signal_extracted

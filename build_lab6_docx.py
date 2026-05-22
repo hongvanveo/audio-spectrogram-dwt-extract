@@ -103,6 +103,7 @@ def build_doc():
     add_code_block(doc, "labtainer -r audio-spectrogram-dwt-extract")
     add_body(doc, "Khi duoc hoi e-mail/student id, sinh vien nhap ma sinh vien cua minh. He thong se tu chuan hoa ma do sang dang IN HOA va ghi nho ID gan nhat.")
     add_body(doc, "Lenh checkwork chi hien thi va cham ket qua cua dung ID dang duoc dung cho bai lab hien tai, khong tron voi cac file .lab cu cua ID khac.")
+    add_body(doc, "Sinh vien chi can kiem tra lenh cua tung task tao dung file dau ra. Khong can chay checkwork sau tung task; checkwork duoc chay mot lan o cuoi bai.")
 
     add_heading(doc, "Muc tieu bai lab", 2)
     add_number(doc, "Kiem tra sender co stego.wav va secret.key.")
@@ -112,7 +113,7 @@ def build_doc():
     add_number(doc, "Sua extract_signal.py de dien stego.wav va secret.key, sau do tao hidden_signal.json.")
     add_number(doc, "Sua recover_image.py de dien hidden_signal.json va secret.key, sau do tao recovered_secret.png.")
     add_number(doc, "Mo truc tiep recovered_secret.png.")
-    add_number(doc, "Chay checkwork de kiem tra ket qua.")
+    add_number(doc, "Chay checkwork o cuoi bai de kiem tra ket qua.")
 
     add_heading(doc, "Phan 1: Kiem tra sender", 3)
     add_code_block(doc, "cd ~/stego\nls -l\ncat README_sender.txt")
@@ -131,15 +132,15 @@ def build_doc():
     add_code_block(doc, "cd ~/stego\nnano extract_signal.py")
     add_body(doc, "Sua hai dong TODO thanh:")
     add_code_block(doc, 'STEGO_FILE = "stego.wav"\nKEY_FILE = "secret.key"')
-    add_code_block(doc, "python3 extract_signal.py\ncheckwork")
+    add_code_block(doc, "python3 extract_signal.py\nls -l hidden_signal.json")
 
     add_heading(doc, "Phan 6: Dung key de khoi phuc anh", 3)
     add_code_block(doc, "nano recover_image.py")
     add_body(doc, "Sua hai dong TODO thanh:")
     add_code_block(doc, 'HIDDEN_SIGNAL = "hidden_signal.json"\nKEY_FILE = "secret.key"')
-    add_code_block(doc, "python3 recover_image.py\ncheckwork")
+    add_code_block(doc, "python3 recover_image.py\nls -l recovered_secret.png")
     add_body(doc, "Mo truc tiep anh trong receiver:")
-    add_code_block(doc, "./view_recovered.sh\ncheckwork")
+    add_code_block(doc, "./view_recovered.sh")
 
     add_heading(doc, "Checkwork", 2)
     add_code_block(doc, "checkwork")
