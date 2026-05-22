@@ -94,7 +94,7 @@ def build_doc():
     set_paragraph_spacing(title, after=14, line=1.0)
 
     add_body(doc, "Tai lieu nay ap dung cho Lab 6: audio-spectrogram-dwt-extract.")
-    add_body(doc, "Lab dung hai container sender va receiver. Sender gui stego.wav va secret.key, receiver tach lai anh bi mat tu audio stego.")
+    add_body(doc, "Lab dung hai container sender va receiver. Sender gui stego.wav va secret.key, receiver tach tin hieu tu DWT truoc, sau do dung key de khoi phuc anh.")
 
     add_heading(doc, "Tai Bai Lab", 2)
     add_code_block(doc, "imodule https://raw.githubusercontent.com/hongvanveo/audio-spectrogram-dwt-extract/main/imodule_audio-spectrogram-dwt-extract.tar")
@@ -109,8 +109,8 @@ def build_doc():
     add_number(doc, "Bat SSH tren receiver.")
     add_number(doc, "Co the nghe truc tiep stego.wav o sender.")
     add_number(doc, "Gui stego.wav va secret.key tu sender sang receiver.")
-    add_number(doc, "Sua extract_task.py de dien dung ten file dau vao.")
-    add_number(doc, "Chay chuong trinh tach anh de tao recovered_secret.png.")
+    add_number(doc, "Sua extract_signal_task.py de dien stego.wav va secret.key, sau do tao hidden_signal.json.")
+    add_number(doc, "Sua recover_image_task.py de dien hidden_signal.json va secret.key, sau do tao recovered_secret.png.")
     add_number(doc, "Mo truc tiep recovered_secret.png.")
     add_number(doc, "Chay checkwork de kiem tra ket qua.")
 
@@ -127,15 +127,19 @@ def build_doc():
     add_code_block(doc, "scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/\nssh ubuntu@receiver \"python3 ~/stego/refresh_status.py\"")
     add_code_block(doc, "cd ~/stego\nls -l stego.wav secret.key")
 
-    add_heading(doc, "Task 5: Sua extract_task.py", 3)
-    add_code_block(doc, "cd ~/stego\nnano extract_task.py")
+    add_heading(doc, "Task 5: Tach tin hieu bi mat tu DWT", 3)
+    add_code_block(doc, "cd ~/stego\nnano extract_signal_task.py")
     add_body(doc, "Sua hai dong TODO thanh:")
     add_code_block(doc, 'STEGO_FILE = "stego.wav"\nKEY_FILE = "secret.key"')
+    add_code_block(doc, "python3 extract_signal_task.py\ncheckwork")
 
-    add_heading(doc, "Task 6: Tach anh bi mat", 3)
-    add_code_block(doc, "python3 extract_task.py\nls -l recovered_secret.png")
+    add_heading(doc, "Task 6: Dung key de khoi phuc anh", 3)
+    add_code_block(doc, "nano recover_image_task.py")
+    add_body(doc, "Sua hai dong TODO thanh:")
+    add_code_block(doc, 'HIDDEN_SIGNAL = "hidden_signal.json"\nKEY_FILE = "secret.key"')
+    add_code_block(doc, "python3 recover_image_task.py\ncheckwork")
     add_body(doc, "Mo truc tiep anh trong receiver:")
-    add_code_block(doc, "./view_recovered.sh")
+    add_code_block(doc, "./view_recovered.sh\ncheckwork")
 
     add_heading(doc, "Checkwork", 2)
     add_code_block(doc, "checkwork")

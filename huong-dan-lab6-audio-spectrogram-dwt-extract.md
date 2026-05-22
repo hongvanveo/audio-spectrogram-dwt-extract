@@ -1,65 +1,32 @@
-# Hướng dẫn thực hành Lab 6: audio-spectrogram-dwt-extract
+# Huong dan thuc hanh Lab 6: audio-spectrogram-dwt-extract
 
-Tài liệu này áp dụng cho:
+Lab 6 dung hai container `sender` va `receiver`. Sender gui file audio da giau tin `stego.wav` va key `secret.key`. Receiver se tach tin theo tung buoc: nhan file, tach tin hieu tu vung tan so cao bang DWT, dung key de dao hoan vi, sau do dung lai anh bi mat.
 
-- Lab 6: `audio-spectrogram-dwt-extract`
-
-Lưu ý chung:
-
-- Bài lab dùng hai container: `sender` và `receiver`.
-- Sender có sẵn `stego.wav` và `secret.key`.
-- Receiver nhận hai file này, dùng DWT để lấy lại tín hiệu bí mật từ phần tần số cao của audio, sau đó dùng key để đảo hoán vị và khôi phục ảnh.
-- Nếu sinh viên muốn làm lại từ đầu, dùng:
-
-```bash
-labtainer -r audio-spectrogram-dwt-extract
-```
-
-## Tải bài lab
+## Tai bai lab
 
 ```bash
 imodule https://raw.githubusercontent.com/hongvanveo/audio-spectrogram-dwt-extract/main/imodule_audio-spectrogram-dwt-extract.tar
 ```
 
-## Khởi động bài lab
+## Khoi dong
 
 ```bash
 labtainer -r audio-spectrogram-dwt-extract
 ```
 
-Khi được hỏi email, sinh viên nhập mã sinh viên của mình. Hệ thống sẽ tự chuẩn hoá mã đó sang dạng IN HOA và ghi nhớ ID gần nhất.
+Khi duoc hoi email/student id, nhap ma sinh vien. Lab se chuan hoa ID sang chu IN HOA va checkwork chi cham ket qua cua ID dang dung.
 
-`checkwork` chỉ hiển thị và chấm kết quả của đúng ID đang được dùng cho bài lab hiện tại, không trộn với các file `.lab` cũ của ID khác.
-
-## Mục tiêu bài lab
-
-Sinh viên cần:
-
-1. Kiểm tra sender có `stego.wav` và `secret.key`.
-2. Bật SSH trên receiver.
-3. Có thể nghe trực tiếp `stego.wav` ở sender.
-4. Gửi `stego.wav` và `secret.key` từ sender sang receiver.
-5. Sửa `extract_task.py` để điền đúng tên file đầu vào.
-6. Chạy chương trình tách ảnh để tạo `recovered_secret.png`.
-7. Mở trực tiếp `recovered_secret.png`.
-8. Chạy `checkwork` để kiểm tra kết quả.
-
-## Nội dung kỹ thuật
-
-Quy trình tách tin:
+## Quy trinh
 
 ```text
 stego.wav + secret.key
-→ DWT nhiều mức trên audio stego
-→ lấy detail coefficients ở mức phân rã cuối
-→ nhân lại với scaled để lấy tín hiệu bí mật
-→ dùng key để đảo hoán vị
-→ dựng lại recovered_secret.png
+-> extract_signal_task.py: DWT tren stego.wav, lay detail coefficients, tao hidden_signal.json
+-> recover_image_task.py: dung key de dao hoan vi, tao recovered_secret.png
 ```
 
-Quy trình này bám theo phần retrieving/decryption của repo `haoyuhsu/Image-in-Audio-Steganography`: lấy high-frequency DWT coefficients, khôi phục tín hiệu đã nhúng bằng hệ số scale, rồi dùng key làm seed để đảo permutation.
+Moi task yeu cau sua file code de dien ten file dau vao roi moi chay. Sau moi task, chay `checkwork` de thay muc tuong ung chuyen sang `Y`.
 
-## Task 1: Kiểm tra file ở sender
+## Task 1: Kiem tra sender
 
 Trong terminal `sender`:
 
@@ -67,16 +34,12 @@ Trong terminal `sender`:
 cd ~/stego
 ls -l
 cat README_sender.txt
+./play_stego.sh
 ```
 
-Sender cần có:
+Sender can co `stego.wav` va `secret.key`.
 
-```text
-stego.wav
-secret.key
-```
-
-## Task 2: Bật SSH trên receiver
+## Task 2: Bat SSH tren receiver
 
 Trong terminal `receiver`:
 
@@ -85,17 +48,7 @@ sudo service ssh start
 systemctl status ssh
 ```
 
-## Task 3: Nghe trực tiếp audio stego ở sender
-
-Trong terminal `sender`:
-
-```bash
-./play_stego.sh
-```
-
-Nếu VM chưa expose soundcard cho container, script sẽ báo không thể phát trực tiếp. Khi đó vẫn tiếp tục các bước còn lại bình thường.
-
-## Task 4: Gửi file từ sender sang receiver
+## Task 3: Gui file sang receiver
 
 Trong terminal `sender`:
 
@@ -104,68 +57,98 @@ scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/
 ssh ubuntu@receiver "python3 ~/stego/refresh_status.py"
 ```
 
-Sau đó kiểm tra ở terminal `receiver`:
+Trong terminal Labtainer:
 
 ```bash
-cd ~/stego
-ls -l stego.wav secret.key
+checkwork
 ```
 
-## Task 5: Sửa file extract_task.py
+Can thay:
+
+```text
+Y - audio_received
+Y - key_received
+```
+
+## Task 4: Tach tin hieu bi mat tu DWT
 
 Trong terminal `receiver`:
 
 ```bash
 cd ~/stego
-nano extract_task.py
+nano extract_signal_task.py
 ```
 
-Tìm hai dòng TODO:
-
-```python
-STEGO_FILE = "TODO_STEGO_FILENAME"
-KEY_FILE = "TODO_KEY_FILENAME"
-```
-
-Sửa thành:
+Sua TODO:
 
 ```python
 STEGO_FILE = "stego.wav"
 KEY_FILE = "secret.key"
 ```
 
-Lưu file và thoát khỏi `nano`.
+Chay:
 
-## Task 6: Tách ảnh bí mật
+```bash
+python3 extract_signal_task.py
+checkwork
+```
+
+Script nay phan ra `stego.wav` bang DWT, lay detail coefficients o muc cuoi va nhan lai voi he so `scaled` trong key de tao `hidden_signal.json`.
+
+Can thay:
+
+```text
+Y - dwt_signal_extracted
+```
+
+## Task 5: Dung key de khoi phuc anh
 
 Trong terminal `receiver`:
 
 ```bash
-python3 extract_task.py
-ls -l recovered_secret.png
+nano recover_image_task.py
 ```
 
-Nếu chạy đúng, chương trình sẽ tạo file:
+Sua TODO:
 
-```text
-recovered_secret.png
+```python
+HIDDEN_SIGNAL = "hidden_signal.json"
+KEY_FILE = "secret.key"
 ```
 
-Mở trực tiếp ảnh trong terminal `receiver`:
+Chay:
 
 ```bash
-./view_recovered.sh
-```
-
-## Task 7: Kiểm tra kết quả
-
-Trên terminal chính của Labtainer:
-
-```bash
+python3 recover_image_task.py
 checkwork
 ```
 
-Kết quả đúng cần có:
+Script nay dung key de sinh lai thu tu permutation, dao hoan vi pixel va tao `recovered_secret.png`.
+
+Can thay:
+
+```text
+Y - key_permutation_used
+Y - secret_image_recovered
+Y - recovered_image_valid
+```
+
+## Task 6: Mo anh da tach
+
+Trong terminal `receiver`:
+
+```bash
+./view_recovered.sh
+checkwork
+```
+
+Can thay:
+
+```text
+Y - recovered_image_viewed
+```
+
+## Ket qua cuoi cung
 
 ```text
 Y - audio_received
@@ -177,30 +160,8 @@ Y - recovered_image_viewed
 Y - recovered_image_valid
 ```
 
-Ý nghĩa các mục chấm:
-
-- `audio_received`: receiver đã nhận `stego.wav`.
-- `key_received`: receiver đã nhận `secret.key`.
-- `dwt_signal_extracted`: receiver đã lấy tín hiệu bí mật từ detail coefficients của DWT.
-- `key_permutation_used`: receiver đã dùng key để đảo hoán vị dữ liệu ảnh.
-- `secret_image_recovered`: đã tạo `recovered_secret.png`.
-- `recovered_image_viewed`: đã mở trực tiếp `recovered_secret.png` trong lab.
-- `recovered_image_valid`: ảnh khôi phục đúng với ảnh bí mật ban đầu.
-
-## Kết thúc bài lab
+Ket thuc:
 
 ```bash
 stoplab audio-spectrogram-dwt-extract
-```
-
-Kết quả sẽ được lưu tại:
-
-```bash
-/home/student/labtainer_xfer/audio-spectrogram-dwt-extract
-```
-
-Tên file bài làm có dạng:
-
-```text
-B22DCAT311.audio-spectrogram-dwt-extract.lab
 ```

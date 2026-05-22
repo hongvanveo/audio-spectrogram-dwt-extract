@@ -1,6 +1,7 @@
 stego/stego.wav
 stego/secret.key
 stego/README_sender.txt
+stego/play_stego.sh
 .bash_aliases
 .ssh/id_ed25519
 .ssh/config

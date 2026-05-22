@@ -2,19 +2,19 @@ LAB 6 - TACH ANH TU AUDIO STEGO BANG DWT VA KEY
 
 Muc tieu
 -------
-Trong lab nay, sender gui cho receiver hai file:
+Sender co san hai file:
 
   1. stego.wav  - audio da duoc nhung anh bi mat
   2. secret.key - key va thong tin can thiet de tach anh
 
-Receiver se dung DWT de lay phan he so tan so cao cua audio stego, sau do
-dung key de dao hoan vi va tao lai anh bi mat.
+Receiver se lam tung cong doan:
 
-Luu y ve student id
--------------------
-Khi `labtainer` hoi e-mail/student id, sinh vien nhap ma cua minh.
-He thong tu chuan hoa thanh chu IN HOA va ghi nho ID gan nhat.
-Lenh `checkwork` chi hien ket qua cua dung ID dang duoc dung cho lan mo lab hien tai.
+  1. Nhan stego.wav va secret.key.
+  2. Tach tin hieu bi mat tu he so tan so cao cua DWT.
+  3. Dung key de dao hoan vi va dung lai anh.
+  4. Mo anh da tach de quan sat.
+
+Sau moi task, co the chay checkwork de xem muc tuong ung chuyen sang Y.
 
 Task 1 - Kiem tra file o sender
 -------------------------------
@@ -23,15 +23,12 @@ Mo terminal sender:
   cd ~/stego
   ls -l
   cat README_sender.txt
+  ./play_stego.sh
 
 Sender phai co:
 
   stego.wav
   secret.key
-
-Neu muon nghe truc tiep audio stego trong sender:
-
-  ./play_stego.sh
 
 Task 2 - Bat SSH tren receiver
 ------------------------------
@@ -42,49 +39,78 @@ Mo terminal receiver:
 
 Task 3 - Gui stego.wav va secret.key sang receiver
 --------------------------------------------------
-Mo terminal sender va chay:
+Mo terminal sender:
 
   scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/
   ssh ubuntu@receiver "python3 ~/stego/refresh_status.py"
 
-Task 4 - Dien thong tin dau vao cho receiver
---------------------------------------------
-Mo terminal receiver:
-
-  cd ~/stego
-  nano extract_task.py
-
-Sua hai dong TODO thanh:
-
-  STEGO_FILE = "stego.wav"
-  KEY_FILE = "secret.key"
-
-Luu file.
-
-Task 5 - Tach anh bi mat
-------------------------
-Trong receiver:
-
-  cd ~/stego
-  python3 extract_task.py
-  ls -l recovered_secret.png
-  ./view_recovered.sh
-
-Script se thuc hien:
-
-  stego.wav -> DWT -> detail coefficients tan so cao
-  detail * scaled -> tin hieu bi mat
-  secret.key -> sinh lai permutation
-  inverse permutation -> recovered_secret.png
-
-Task 6 - Cham diem
-------------------
 Trong terminal Labtainer:
 
   checkwork
 
-Ket qua mong doi:
+Muc can Y:
+  audio_received
+  key_received
 
+Task 4 - Tach tin hieu bi mat tu DWT
+------------------------------------
+Mo terminal receiver:
+
+  cd ~/stego
+  nano extract_signal_task.py
+
+Sua TODO thanh:
+
+  STEGO_FILE = "stego.wav"
+  KEY_FILE = "secret.key"
+
+Chay:
+
+  python3 extract_signal_task.py
+  checkwork
+
+Ket qua tao ra:
+  hidden_signal.json
+
+Muc can Y:
+  dwt_signal_extracted
+
+Task 5 - Dung key de khoi phuc anh
+----------------------------------
+Mo terminal receiver:
+
+  nano recover_image_task.py
+
+Sua TODO thanh:
+
+  HIDDEN_SIGNAL = "hidden_signal.json"
+  KEY_FILE = "secret.key"
+
+Chay:
+
+  python3 recover_image_task.py
+  checkwork
+
+Ket qua tao ra:
+  recovered_secret.png
+
+Muc can Y:
+  key_permutation_used
+  secret_image_recovered
+  recovered_image_valid
+
+Task 6 - Mo anh da tach
+-----------------------
+Trong receiver:
+
+  ./view_recovered.sh
+  checkwork
+
+Muc can Y:
+  recovered_image_viewed
+
+Ket qua checkwork cuoi cung
+---------------------------
   Y - audio_received
   Y - key_received
   Y - dwt_signal_extracted
@@ -94,5 +120,4 @@ Ket qua mong doi:
   Y - recovered_image_valid
 
 Ket thuc lab:
-
-  stoplab
+  stoplab audio-spectrogram-dwt-extract
