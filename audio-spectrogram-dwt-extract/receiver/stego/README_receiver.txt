@@ -7,7 +7,7 @@ Neu muon checkwork cap nhat ngay sau khi sender gui file, chay:
 Buoc 1 - tach tin hieu mien thoi gian tu he so tan so cao DWT:
 
   cd ~/stego
-  nano extract_signal_task.py
+  nano extract_signal.py
 
 Sua:
 
@@ -16,11 +16,11 @@ Sua:
 
 Chay:
 
-  python3 extract_signal_task.py
+  python3 extract_signal.py
 
 Buoc 2 - dung key de hoan vi nguoc va dung lai anh:
 
-  nano recover_image_task.py
+  nano recover_image.py
 
 Sua:
 
@@ -29,7 +29,7 @@ Sua:
 
 Chay:
 
-  python3 recover_image_task.py
+  python3 recover_image.py
 
 Mo truc tiep anh da tach:
 

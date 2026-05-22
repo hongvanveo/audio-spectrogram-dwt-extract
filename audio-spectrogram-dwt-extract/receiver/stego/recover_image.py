@@ -12,7 +12,7 @@ from spectrogram_dwt_extract import (
 
 
 def get_inputs():
-    # TODO: dien file tin hieu da tach tu extract_signal_task.py.
+    # TODO: dien file tin hieu da tach tu extract_signal.py.
     HIDDEN_SIGNAL = "TODO_HIDDEN_SIGNAL_FILENAME"
 
     # TODO: dien ten file key da nhan tu sender.
@@ -20,7 +20,7 @@ def get_inputs():
 
     OUTPUT_IMAGE = "recovered_secret.png"
     if "TODO" in HIDDEN_SIGNAL or "TODO" in KEY_FILE:
-        raise SystemExit("Hay mo recover_image_task.py va dien hidden_signal.json va secret.key truoc khi chay.")
+        raise SystemExit("Hay mo recover_image.py va dien hidden_signal.json va secret.key truoc khi chay.")
     return HIDDEN_SIGNAL, KEY_FILE, OUTPUT_IMAGE
 
 

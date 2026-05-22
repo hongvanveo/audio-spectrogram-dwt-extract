@@ -7,8 +7,8 @@ Pipeline:
 
 ```text
 stego.wav + secret.key
--> extract_signal_task.py: DWT high-frequency detail -> hidden_signal.json
--> recover_image_task.py: inverse permutation bang key -> recovered_secret.png
+-> extract_signal.py: DWT high-frequency detail -> hidden_signal.json
+-> recover_image.py: inverse permutation bang key -> recovered_secret.png
 ```
 
 Phuong phap bam theo y tuong retrieving trong repo `haoyuhsu/Image-in-Audio-Steganography`: lay detail coefficients o muc DWT cuoi, nhan lai bang `scaled`, sau do dung key lam seed de dao permutation.
@@ -36,10 +36,10 @@ Trong receiver:
 
 ```bash
 cd ~/stego
-nano extract_signal_task.py
-python3 extract_signal_task.py
-nano recover_image_task.py
-python3 recover_image_task.py
+nano extract_signal.py
+python3 extract_signal.py
+nano recover_image.py
+python3 recover_image.py
 ./view_recovered.sh
 ```
 

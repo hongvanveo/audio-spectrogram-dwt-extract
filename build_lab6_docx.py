@@ -109,8 +109,8 @@ def build_doc():
     add_number(doc, "Bat SSH tren receiver.")
     add_number(doc, "Co the nghe truc tiep stego.wav o sender.")
     add_number(doc, "Gui stego.wav va secret.key tu sender sang receiver.")
-    add_number(doc, "Sua extract_signal_task.py de dien stego.wav va secret.key, sau do tao hidden_signal.json.")
-    add_number(doc, "Sua recover_image_task.py de dien hidden_signal.json va secret.key, sau do tao recovered_secret.png.")
+    add_number(doc, "Sua extract_signal.py de dien stego.wav va secret.key, sau do tao hidden_signal.json.")
+    add_number(doc, "Sua recover_image.py de dien hidden_signal.json va secret.key, sau do tao recovered_secret.png.")
     add_number(doc, "Mo truc tiep recovered_secret.png.")
     add_number(doc, "Chay checkwork de kiem tra ket qua.")
 
@@ -128,16 +128,16 @@ def build_doc():
     add_code_block(doc, "cd ~/stego\nls -l stego.wav secret.key")
 
     add_heading(doc, "Task 5: Tach tin hieu bi mat tu DWT", 3)
-    add_code_block(doc, "cd ~/stego\nnano extract_signal_task.py")
+    add_code_block(doc, "cd ~/stego\nnano extract_signal.py")
     add_body(doc, "Sua hai dong TODO thanh:")
     add_code_block(doc, 'STEGO_FILE = "stego.wav"\nKEY_FILE = "secret.key"')
-    add_code_block(doc, "python3 extract_signal_task.py\ncheckwork")
+    add_code_block(doc, "python3 extract_signal.py\ncheckwork")
 
     add_heading(doc, "Task 6: Dung key de khoi phuc anh", 3)
-    add_code_block(doc, "nano recover_image_task.py")
+    add_code_block(doc, "nano recover_image.py")
     add_body(doc, "Sua hai dong TODO thanh:")
     add_code_block(doc, 'HIDDEN_SIGNAL = "hidden_signal.json"\nKEY_FILE = "secret.key"')
-    add_code_block(doc, "python3 recover_image_task.py\ncheckwork")
+    add_code_block(doc, "python3 recover_image.py\ncheckwork")
     add_body(doc, "Mo truc tiep anh trong receiver:")
     add_code_block(doc, "./view_recovered.sh\ncheckwork")
 

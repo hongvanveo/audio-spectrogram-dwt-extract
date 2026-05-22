@@ -1,6 +1,6 @@
 stego/spectrogram_dwt_extract.py
-stego/extract_signal_task.py
-stego/recover_image_task.py
+stego/extract_signal.py
+stego/recover_image.py
 stego/refresh_status.py
 stego/.expected_sha256
 stego/README_receiver.txt

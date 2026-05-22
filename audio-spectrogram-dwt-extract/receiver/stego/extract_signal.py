@@ -14,7 +14,7 @@ def get_inputs():
 
     OUTPUT_SIGNAL = "hidden_signal.json"
     if "TODO" in STEGO_FILE or "TODO" in KEY_FILE:
-        raise SystemExit("Hay mo extract_signal_task.py va dien stego.wav va secret.key truoc khi chay.")
+        raise SystemExit("Hay mo extract_signal.py va dien stego.wav va secret.key truoc khi chay.")
     return STEGO_FILE, KEY_FILE, OUTPUT_SIGNAL
 
 

@@ -20,8 +20,8 @@ Khi duoc hoi email/student id, nhap ma sinh vien. Lab se chuan hoa ID sang chu I
 
 ```text
 stego.wav + secret.key
--> extract_signal_task.py: DWT tren stego.wav, lay detail coefficients, tao hidden_signal.json
--> recover_image_task.py: dung key de dao hoan vi, tao recovered_secret.png
+-> extract_signal.py: DWT tren stego.wav, lay detail coefficients, tao hidden_signal.json
+-> recover_image.py: dung key de dao hoan vi, tao recovered_secret.png
 ```
 
 Moi task yeu cau sua file code de dien ten file dau vao roi moi chay. Sau moi task, chay `checkwork` de thay muc tuong ung chuyen sang `Y`.
@@ -76,7 +76,7 @@ Trong terminal `receiver`:
 
 ```bash
 cd ~/stego
-nano extract_signal_task.py
+nano extract_signal.py
 ```
 
 Sua TODO:
@@ -89,7 +89,7 @@ KEY_FILE = "secret.key"
 Chay:
 
 ```bash
-python3 extract_signal_task.py
+python3 extract_signal.py
 checkwork
 ```
 
@@ -106,7 +106,7 @@ Y - dwt_signal_extracted
 Trong terminal `receiver`:
 
 ```bash
-nano recover_image_task.py
+nano recover_image.py
 ```
 
 Sua TODO:
@@ -119,7 +119,7 @@ KEY_FILE = "secret.key"
 Chay:
 
 ```bash
-python3 recover_image_task.py
+python3 recover_image.py
 checkwork
 ```
 
