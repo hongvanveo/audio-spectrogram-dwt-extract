@@ -114,26 +114,26 @@ def build_doc():
     add_number(doc, "Mo truc tiep recovered_secret.png.")
     add_number(doc, "Chay checkwork de kiem tra ket qua.")
 
-    add_heading(doc, "Task 1: Kiem tra sender", 3)
+    add_heading(doc, "Phan 1: Kiem tra sender", 3)
     add_code_block(doc, "cd ~/stego\nls -l\ncat README_sender.txt")
 
-    add_heading(doc, "Task 2: Bat SSH tren receiver", 3)
+    add_heading(doc, "Phan 2: Bat SSH tren receiver", 3)
     add_code_block(doc, "sudo service ssh start\nsystemctl status ssh")
 
-    add_heading(doc, "Task 3: Nghe truc tiep audio stego", 3)
+    add_heading(doc, "Phan 3: Nghe truc tiep audio stego", 3)
     add_code_block(doc, "./play_stego.sh")
 
-    add_heading(doc, "Task 4: Gui file sang receiver", 3)
+    add_heading(doc, "Phan 4: Gui file sang receiver", 3)
     add_code_block(doc, "scp ~/stego/stego.wav ~/stego/secret.key ubuntu@receiver:~/stego/\nssh ubuntu@receiver \"python3 ~/stego/refresh_status.py\"")
     add_code_block(doc, "cd ~/stego\nls -l stego.wav secret.key")
 
-    add_heading(doc, "Task 5: Tach tin hieu bi mat tu DWT", 3)
+    add_heading(doc, "Phan 5: Tach tin hieu bi mat tu DWT", 3)
     add_code_block(doc, "cd ~/stego\nnano extract_signal.py")
     add_body(doc, "Sua hai dong TODO thanh:")
     add_code_block(doc, 'STEGO_FILE = "stego.wav"\nKEY_FILE = "secret.key"')
     add_code_block(doc, "python3 extract_signal.py\ncheckwork")
 
-    add_heading(doc, "Task 6: Dung key de khoi phuc anh", 3)
+    add_heading(doc, "Phan 6: Dung key de khoi phuc anh", 3)
     add_code_block(doc, "nano recover_image.py")
     add_body(doc, "Sua hai dong TODO thanh:")
     add_code_block(doc, 'HIDDEN_SIGNAL = "hidden_signal.json"\nKEY_FILE = "secret.key"')

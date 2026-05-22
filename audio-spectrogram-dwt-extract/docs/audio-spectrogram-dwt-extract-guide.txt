@@ -14,9 +14,9 @@ Receiver se lam tung cong doan:
   3. Dung key de dao hoan vi va dung lai anh.
   4. Mo anh da tach de quan sat.
 
-Sau moi task, co the chay checkwork de xem muc tuong ung chuyen sang Y.
+Sau moi phan, co the chay checkwork de xem muc tuong ung chuyen sang Y.
 
-Task 1 - Kiem tra file o sender
+Phan 1 - Kiem tra file o sender
 -------------------------------
 Mo terminal sender:
 
@@ -30,14 +30,14 @@ Sender phai co:
   stego.wav
   secret.key
 
-Task 2 - Bat SSH tren receiver
+Phan 2 - Bat SSH tren receiver
 ------------------------------
 Mo terminal receiver:
 
   sudo service ssh start
   systemctl status ssh
 
-Task 3 - Gui stego.wav va secret.key sang receiver
+Phan 3 - Gui stego.wav va secret.key sang receiver
 --------------------------------------------------
 Mo terminal sender:
 
@@ -52,7 +52,7 @@ Muc can Y:
   audio_received
   key_received
 
-Task 4 - Tach tin hieu bi mat tu DWT
+Phan 4 - Tach tin hieu bi mat tu DWT
 ------------------------------------
 Mo terminal receiver:
 
@@ -75,7 +75,7 @@ Ket qua tao ra:
 Muc can Y:
   dwt_signal_extracted
 
-Task 5 - Dung key de khoi phuc anh
+Phan 5 - Dung key de khoi phuc anh
 ----------------------------------
 Mo terminal receiver:
 
@@ -99,7 +99,7 @@ Muc can Y:
   secret_image_recovered
   recovered_image_valid
 
-Task 6 - Mo anh da tach
+Phan 6 - Mo anh da tach
 -----------------------
 Trong receiver:
 
